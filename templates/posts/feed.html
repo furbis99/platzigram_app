@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_content %}
+<title>Home Page | Platzigram</title>
+{% endblock head_content %}
+
+{% block container %}
+<div class="mt-4">
+	<div class="container d-flex justify-content-center">
+		<div class="col-9">
+			<div class="row center-block">
+				<div class="col-8">
+
+					<!-- START OF POSTS -->
+					<div class="d-flex flex-column mt-4 mb-4">
+
+						<div class="card">
+							<div class="card-header p-3">
+								<div class="d-flex flex-row align-items-center">
+									<div
+									class="rounded-circle overflow-hidden d-flex justify-content-center align-items-center border border-danger post-profile-photo mr-3">
+									<img src="{% static 'img/profile.jpg' %}" alt="..."
+									style="transform: scale(1.5); width: 100%; position: absolute; left: 0;">
+								</div>
+								<span class="font-weight-bold">samkolder</span>
+							</div>
+						</div>
+						<div class="card-body p-0">
+							<div class="embed-responsive embed-responsive-1by1">
+								<img class="embed-responsive-item" src="{% static 'img/post-1.jpg' %}" />
+							</div>
+
+							<div class="d-flex flex-row justify-content-between pl-3 pr-3 pt-3 pb-1">
+								<ul class="list-inline d-flex flex-row align-items-center m-0">
+									<li class="list-inline-item">
+										<button class="btn p-0">
+											<i class="fa fa-heart-o fa-lg" aria-hidden="true"></i>
+										</button>
+									</li>
+									<li class="list-inline-item ml-2">
+										<button class="btn p-0">
+											<i class="fa fa-comment-o fa-lg" aria-hidden="true"></i>
+										</button>
+									</li>
+									<li class="list-inline-item ml-2">
+										<button class="btn p-0">
+											<i class="fa fa-share-alt fa-lg" aria-hidden="true"></i>
+										</button>
+									</li>
+								</ul>
+								<div>
+									<button class="btn p-0">
+										<svg width="1.6em" height="1.6em" viewBox="0 0 16 16" class="bi bi-hdd"
+										fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd"
+										d="M14 9H2a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a1 1 0 0 0-1-1zM2 8a2 2 0 0 0-2 2v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1a2 2 0 0 0-2-2H2z" />
+										<path
+										d="M5 10.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm-2 0a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
+										<path fill-rule="evenodd"
+										d="M4.094 4a.5.5 0 0 0-.44.26l-2.47 4.532A1.5 1.5 0 0 0 1 9.51v.99H0v-.99c0-.418.105-.83.305-1.197l2.472-4.531A1.5 1.5 0 0 1 4.094 3h7.812a1.5 1.5 0 0 1 1.317.782l2.472 4.53c.2.368.305.78.305 1.198v.99h-1v-.99a1.5 1.5 0 0 0-.183-.718L12.345 4.26a.5.5 0 0 0-.439-.26H4.094z" />
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div class="pl-3 pr-3 pb-2">
+							<strong class="d-block">365.354 likes</strong>
+							<strong class="d-block">samkolder</strong>
+							<p class="d-block mb-1">Lil drone shot I got a while back but never posted.</p>
+							<button class="btn p-0">
+								<span class="text-muted">View all 2,247 comments</span>
+							</button>
+
+							<div>
+								<div>
+									<strong class="d-block">a.7.m3ff</strong>
+									<span>❤️💓💓💓💓💓</span>
+								</div>
+								<div>
+									<strong class="d-block">adri_rez77</strong>
+									<span>Hi</span>
+								</div>
+							</div>
+
+							<small class="text-muted">4 HOURS AGO</small>
+						</div>
+
+						<div class="position-relative comment-box">
+							<form>
+								<input class="w-100 border-0 p-3 input-post" placeholder="Add a comment...">
+								<button class="btn btn-primary position-absolute btn-ig">Post</button>
+							</form>
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
+			<!-- END OF POSTS -->
+		</div>
+
+	</div>
+</div>
+</div>
+</div>
+{% endblock container %}
+
+<!--
+<div class="row">
+		{% for post in posts %}
+		<div class="col-lg-4 offset-lg-4">
+			<div class="media">
+				<img src="{{post.user.picture}}" alt="{{post.user.name}}" class="mr-3 rounded-circle">
+			</div>
+			<div class="media-body">
+				<h5 class="mt-0">{{post.user.name}}</h5>
+				{{post.timestamp}}
+			</div>
+			<img src="{{post.picture}}" alt="{{post.name}}" class="img-fluid mt-3 border round">
+			<h6 class="ml-1 mt-1">{{post.name}}</h6>
+		</div>
+		{% endfor %}
+	</div>
+
+-->

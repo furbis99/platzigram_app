@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+	<title>@ {{request.user.username}} | New Post</title>
+{% endblock head_content %}
+
+{% block container %}
+<div class="container">
+	<div class="row justify-content-md-center">
+		<div class="col-6 p-4" id="profile-box">
+			<h2>New Post</h2>
+			<br>
+			<form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+
+				{# User #}
+				<input type="hidden" name='user' value="{{request.user.pk}}">
+				<input type="hidden" name="profile" value="{{user.profile.pk}}">
+
+				{# Title field #}
+				<div class="form-group">
+					<label>Titulo:</label>
+					<input
+					class="form-control"
+					type="text"
+					name="title"
+					placeholder="Titulo"
+					value=""
+					/>
+			
+				</div>
+				{# Title errors #}
+				{% if form.errors.title %}
+					<div class="p-0 mb-1 bg-danger text-white">{{form.errors.title}}</div>
+				{% endif %}
+				
+
+				{# Image field #}
+				<div class="form-group">
+					<label>Imagen:</label>
+					<input type="file" name="photo" class="form-control" placeholder="Foto">
+					
+				</div>
+				{# Image errors#}
+				{% if form.errors.photo %}
+					<div class="p-0 mb-1 bg-danger text-white">{{form.errors.photo}}</div>
+				{% endif %}
+				
+
+				<button type="submit" class="btn btn-primary btn-block mt-5">Create Postd</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock container %}

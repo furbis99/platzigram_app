@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head_content %}
+<title>@ {{request.user.username}} | Update Profile</title>
+{% endblock head_content %}
+
+
+{% block container %}
+<div class="container">
+	<div class="row justify-content-md-center">
+		<div class="col-6 p-4" id="profile-box">
+
+			<form action="{% url 'users:update_profile' %}" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				
+				{# Media field #}
+				<div class="media">
+					{% if request.user.profile.picture %}
+						<img src="{{ request.user.profile.picture.url }}" class="rounded-circle" height="50" />	
+					{% else %}
+						<img src="{% static 'img/default-user.jpg' %}" class="rounded-circle" height="50" />
+					{% endif %}
+					
+					
+					<div class="media-body">
+						<h5 class="ml-4">@{{ user.username }} | {{ user.get_full_name }}</h5>
+						<p class="ml-4"><input type="file" name="picture"></p>
+					</div>
+				</div>
+				{# Meida errors #}
+				{% if form.errors.picture %}
+					<div class="p-0 mb-1 bg-danger text-white">{{ form.errors.picture }}</div>
+				{% endif %}
+			
+				<hr><br>
+
+				{# Website field #}
+				<div class="form-group">
+					<label>Website</label>
+					<input
+					class="form-control"
+					type="url"
+					name="website"
+					placeholder="Website"
+					value="{% if form.errors.website  %}{{form.website.value}}{% else %}{{ profile.website }}{% endif %}"
+					/>
+			
+				</div>
+				{# Website errors #}
+				{% if form.errors.website %}
+					<div class="p-0 mb-1 bg-danger text-white">{{ form.errors.website }}</div>
+				{% endif %}
+
+				{# Biography field #}
+				<div class="form-group">
+					<label>Biography</label>
+					<textarea
+					class="form-control"
+					name="biography"
+					>{% if form.errors.biography %}{{form.biography.value}}{% else %}{{profile.biography}}{%endif%}</textarea>
+
+					
+				</div>
+				{# Biography errors #}
+				{% if form.errors.biography %}
+					<div class="p-0 mb-1 bg-danger text-white">{{ form.errors.biography }}</div>
+				{% endif %}
+
+				{# Phone number field #}
+				<div class="form-group">
+					<label>Phone number</label>
+					<input
+					class="form-control "
+					type="text"
+					name="phone_number"
+					placeholder="Phone number"
+					value="{% if form.errors.phone_number %}{{form.phone_number.value}}{% else %}{{profile.phone_number}}{% endif %}"
+					/>
+					
+				</div>
+				{# Phone number errors#}
+				{% if form.errors.phone_number %}
+					<div class="p-0 mb-1 bg-danger text-white">{{form.errors.phone_number}}</div>
+				{% endif %}				
+
+				<button type="submit" class="btn btn-primary btn-block mt-5">Update info</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock container %}
+
